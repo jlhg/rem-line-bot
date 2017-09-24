@@ -4,6 +4,7 @@ require "sinatra"
 
 set :root, File.dirname(__FILE__)
 register Config
+set :port, Settings.port
 
 def client
   @client ||= Line::Bot::Client.new { |config|
