@@ -66,6 +66,8 @@ post "/webhook" do
         user_message = event.message["text"]
         if user_message.include?("雷姆") && user_message.include?("吃什麼")
           current_week = Date.today.strftime("%u").to_i
+          random_rest = nil
+
           loop do
             random_rest = restaurents.sample
             break unless random_rest.closing_days.include? current_week
