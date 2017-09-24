@@ -1,19 +1,17 @@
-require "config"
 require "line/bot"
 require "sinatra"
+require "config"
 
 set :root, File.dirname(__FILE__)
-set :port, 9999
-set :bind, "0.0.0.0"
 register Config
-
-
+set :port, Settings.port
+set :bind, Settings.bind_address
 
 def client
-  @client ||= Line::Bot::Client.new { |config|
+  @client ||= Line::Bot::Client.new do |config|
     config.channel_secret = Settings.line.channel_secret
     config.channel_token = Settings.line.channel_token
-  }
+  end
 end
 
 post "/webhook" do

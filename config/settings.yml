@@ -1,3 +1,5 @@
 line:
   channel_secret: ""
   channel_token: ""
+port: 9999
+bind_address: "127.0.0.1"
