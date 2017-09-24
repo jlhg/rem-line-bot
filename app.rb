@@ -77,7 +77,7 @@ post "/webhook" do
 
             message = {
               type: "text",
-              text: "我找找... 吃 #{random_rest.name} 好了!"
+              text: "我找找... 有了! 吃#{random_rest.name}吧!!"
             }
 
             client.reply_message(reply_token, message)
