@@ -64,6 +64,7 @@ post "/webhook" do
       case event.type
       when Line::Bot::Event::MessageType::Text
         user_message = event.message["text"]
+        reply_token = event["replyToken"]
         if user_message.include?("雷姆")
           if user_message.include?("吃什麼")
             current_week = Date.today.strftime("%u").to_i
@@ -79,7 +80,7 @@ post "/webhook" do
               text: "我找找... 吃 #{random_rest.name} 好了!"
             }
 
-            client.reply_message(event["replyToken"], message)
+            client.reply_message(reply_token, message)
           end
 
           if user_message =~ /早安|早晨/
@@ -87,7 +88,7 @@ post "/webhook" do
               type: "text",
               text: "早安!! "
             }
-            client.reply_message(event["replyToken"], message)
+            client.reply_message(reply_token, message)
 
             message = {
               type: 'image',
