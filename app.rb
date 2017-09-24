@@ -92,8 +92,8 @@ post "/webhook" do
 
             message = {
               type: 'image',
-              originalContentUrl: "https://i1.wp.com/inews.gtimg.com/newsapp_match/0/1459905078/0",
-              previewImageUrl: "https://i1.wp.com/inews.gtimg.com/newsapp_match/0/1459905078/0"
+              originalContentUrl: "https://i.imgur.com/tPDtywm.jpg",
+              previewImageUrl: "https://i.imgur.com/tPDtywm.jpg"
             }
             client.reply_message(reply_token, message)
           end
