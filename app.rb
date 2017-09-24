@@ -3,8 +3,11 @@ require "line/bot"
 require "sinatra"
 
 set :root, File.dirname(__FILE__)
+set :port, 9999
+set :bind, "0.0.0.0"
 register Config
-set :port, Settings.port
+
+
 
 def client
   @client ||= Line::Bot::Client.new { |config|
