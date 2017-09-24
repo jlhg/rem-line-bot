@@ -64,21 +64,38 @@ post "/webhook" do
       case event.type
       when Line::Bot::Event::MessageType::Text
         user_message = event.message["text"]
-        if user_message.include?("雷姆") && user_message.include?("吃什麼")
-          current_week = Date.today.strftime("%u").to_i
-          random_rest = nil
+        if user_message.include?("雷姆")
+          if user_message.include?("吃什麼")
+            current_week = Date.today.strftime("%u").to_i
+            random_rest = nil
 
-          loop do
-            random_rest = restaurents.sample
-            break unless random_rest.closing_days.include? current_week
+            loop do
+              random_rest = restaurents.sample
+              break unless random_rest.closing_days.include? current_week
+            end
+
+            message = {
+              type: "text",
+              text: "我找找... 吃 #{random_rest.name} 好了!"
+            }
+
+            client.reply_message(event["replyToken"], message)
           end
 
-          message = {
-            type: "text",
-            text: "我找找... 吃 #{random_rest.name} 好了!"
-          }
+          if user_message =~ /早安|早晨/
+            message = {
+              type: "text",
+              text: "早安!! "
+            }
+            client.reply_message(event["replyToken"], message)
 
-          client.reply_message(event["replyToken"], message)
+            message = {
+              type: 'image',
+              originalContentUrl: "https://i1.wp.com/inews.gtimg.com/newsapp_match/0/1459905078/0",
+              previewImageUrl: "https://i1.wp.com/inews.gtimg.com/newsapp_match/0/1459905078/0"
+            }
+            client.reply_message(reply_token, message)
+          end
         end
       end
     end
