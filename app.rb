@@ -85,12 +85,6 @@ post "/webhook" do
 
           if user_message =~ /早安|早晨/
             message = {
-              type: "text",
-              text: "早安!! "
-            }
-            client.reply_message(reply_token, message)
-
-            message = {
               type: 'image',
               originalContentUrl: "https://i.imgur.com/tPDtywm.jpg",
               previewImageUrl: "https://i.imgur.com/tPDtywm.jpg"
