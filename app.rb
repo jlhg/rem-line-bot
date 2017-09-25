@@ -66,7 +66,7 @@ post "/webhook" do
         user_message = event.message["text"]
         reply_token = event["replyToken"]
         if user_message.include?("雷姆")
-          if user_message.include?("吃什麼")
+          if user_message =~ /吃什麼|餓/
             current_week = Date.today.strftime("%u").to_i
             random_rest = nil
 
