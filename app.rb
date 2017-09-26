@@ -104,8 +104,8 @@ post "/webhook" do
           if user_message =~ /晚安/
             message = {
               type: 'image',
-              originalContentUrl: "https://i.ytimg.com/vi/QK92tLKQmbs/hqdefault.jpg",
-              previewImageUrl: "https://i.ytimg.com/vi/QK92tLKQmbs/hqdefault.jpg"
+              originalContentUrl: "https://i.imgur.com/nm0c4Sd.png",
+              previewImageUrl: "https://i.imgur.com/nm0c4Sd.png"
             }
             client.reply_message(reply_token, message)
           end
