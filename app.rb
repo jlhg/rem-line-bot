@@ -91,6 +91,15 @@ post "/webhook" do
             }
             client.reply_message(reply_token, message)
           end
+
+          if user_message =~ /午安/
+            message = {
+              type: "text",
+              text: "客人，您醒了嗎?"
+            }
+
+            client.reply_message(reply_token, message)
+          end
         end
       end
     end
